@@ -37,13 +37,67 @@
         $edad=$_POST['edad'];
         $correo=$_POST['correo'];
         $rol=$_POST['rol'];  
+
+        $validacion = 0;
+
+        if(empty($nombre)){
+            echo "<h1 style=\"border:1px solid black; background-color:red;\">
+                   DEBE COMPLETAR EL CAMPO NOMBRE
+               </h1>";
+           
+           $validacion = 1;
+       }
+
        
-        echo "<div style=\"border:1px solid black; background-color:yellow;\">
+        if(empty($edad)){
+            echo "<h1 style=\"border:1px solid black; background-color:red;\">
+                    DEBE COMPLETAR EL CAMPO EDAD
+                </h1>";
+            
+            $validacion = 1 ;
+        }else{
+            if($edad < 0 || $edad > 100){
+                echo "<h1 style=\"border:1px solid black; background-color:red; padding: 1cm; text-align:center;\">
+                    EL VALOR DE EDAD DEBE SER VÁLIDO.
+
+                    <br> Por favor, vuelve a escribir la edad; esta debe estar en un número realista de edad.
+                </h1>";
+
+                $validacion = 1 ;
+            }
+        }
+
+        if(empty($correo)){
+            echo "<h1 style=\"border:1px solid black; background-color:red;\">
+                   DEBE COMPLETAR EL CAMPO CORREO
+               </h1>";
+           
+           $validacion = 1;
+       }
+
+
+       if(empty($rol)){
+        echo "<h1 style=\"border:1px solid black; background-color:red;\">
+               DEBE COMPLETAR EL CAMPO ERROR
+           </h1>";
+       
+       $validacion = 1;
+   }
+
+
+
+
+
+        // Aquí digo que si los campos están diligenciados correctamenten los datos recibidos.
+        if($validacion == 0){
+            echo "<h2 style=\"border:1px solid black; background-color:#58EF00; padding: 2cm;\">
                 Los datos recibidos son:
                 <ul>Nombre:  $nombre </ul>
                 <ul>Edad:  $edad </ul>
                 <ul>Correo:  $correo</ul>
                 <ul>Rol: $rol </ul>
-			  </div>";
+			  </h2>";
+        }
+        
     }
 ?>
